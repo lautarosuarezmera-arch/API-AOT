@@ -3,13 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PAGINA DE INICIO</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
-    <h1>Ejemplo de AJAX</h1>
-    <div id="resultado"></div>
-    <button onclick="xhttpRequest()">Pedir</button>
-    <script src="style.js"></script>
 <body>
-    
+
+    <nav class="banner">
+        <div class="logo">ATTACK ON TITAN WIKI</div>
+        
+       <div class="logo-container">
+            <img src="https://cdn.prod.website-files.com/64ea57571d50b02423c4505d/64fa2af723cae8e0aa0e0101_attack%20on%20titan%20logo.png" alt="IMAGENLOGOTIPO" class="banner-logo">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#">INICIO</a></li>
+            <li><a href="#">PERSONAJES</a></li>
+            <li><a href="#">EPISODIOS</a></li>
+            <li><a href="#">LOCALIZACIONES</a></li>
+            <li><a href="#">ORGANIZACIONES</a></li>
+            <li><a href="#">TITANES</a></li>
+        </ul>
+    </nav>
+
+    <main class="contenedor-principal">
+
+        <div id="resultado"></div>
+        <button onclick="xhttpRequest()">PERSONAJES</button>
+        <button onclick="xhttpRequest2()">TITANES</button>
+        <button onclick="xhttpRequest3()">LOCALIZACIONES</button>
+        <button onclick="xhttpRequest4()">EPISODIOS</button>
+        <button onclick="xhttpRequest5()">ORGANIZACIONES</button>
+    </main>
+
+    <script src="style.js"></script>
 </body>
 </html>
