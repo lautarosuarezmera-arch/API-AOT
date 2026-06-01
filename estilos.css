@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: url("ctmhoyo221861.jpg");
+    background-image: url(IMAGENES/ctmhoyo221861.jpg);
     background-size: cover; 
     background-position: center; 
     background-attachment: fixed; 
@@ -16,13 +16,17 @@ body {
 }
 
 h1 {
-    color: black;
+    color: white;
     margin-top: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
 }
 
+h3 {
+    color: white;
+}
+
 .banner {
-    background-color: #333; 
+    background-color: #4A5D4E; 
     color: white;
     display: flex;
     flex-direction: column;   
@@ -90,7 +94,7 @@ h1 {
 .tarjeta-imagen {
     max-width: 600px; 
     width: 100%;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0);
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
@@ -102,4 +106,90 @@ h1 {
     height: auto;
     display: block;
     border-radius: 4px;
+}
+
+/* ESTILO PARA LOS BOTONES DENTRO DEL BANNER */
+.buttons button {
+    background-color: transparent; /* Hace el fondo transparente */
+    color: white;                  /* Color del texto */
+    border: 2px solid white;       /* Un borde elegante blanco */
+    padding: 8px 16px;             /* Espacio interno para que no se vean apretados */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;              /* Cambia el cursor a la mano al pasar por encima */
+    border-radius: 5px;            /* Bordes ligeramente redondeados */
+    transition: all 0.3s ease;     /* Transición suave para el efecto hover */
+}
+
+/* EFECTO CUANDO PASAS EL MOUSE POR ENCIMA */
+.buttons button:hover {
+    background-color: #e67e22;     /* Fondo naranja igual que tus enlaces */
+    color: white;
+    border-color: #e67e22;         /* Cambia el borde al mismo color */
+}
+
+/* CONTENEDOR DE RESULTADOS DE LA API (Para que se muestren en filas y columnas) */
+#resultado {
+    display: flex;
+    flex-wrap: wrap;       /* Si no entran en la fila, saltan abajo */
+    justify-content: center;
+    gap: 20px;             /* Espacio entre tarjeta y tarjeta */
+    width: 100%;
+    max-width: 1200px;     /* Límite para que no se desparrame en pantallas enormes */
+}
+
+/* LA TARJETA INDIVIDUAL */
+.tarjeta {
+    background-color: rgba(0, 0, 0, 0.65); /* Fondo oscuro transparente para que se lea el texto */
+    border: 1px solid #4A5D4E;            /* Borde verde sutil */
+    border-radius: 8px;
+    padding: 15px;
+    width: 250px;                         /* Ancho fijo ideal para personajes/titanes */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease;
+}
+
+/* Efecto hover en las tarjetas */
+.tarjeta:hover {
+    transform: translateY(-5px);          /* Pequeño salto hacia arriba al pasar el mouse */
+    border-color: #e67e22;                /* El borde cambia al naranja que te gusta */
+}
+
+/* LAS IMÁGENES DENTRO DE LAS TARJETAS */
+.tarjeta img {
+    width: 100%;                          /* Se adapta al ancho de la tarjeta (250px) */
+    height: 250px;                        /* Altura fija para que todas las tarjetas midan lo mismo */
+    object-fit: cover;                    /* Corta la imagen proporcionalmente sin deformarla */
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.btn-subir {
+    position: fixed;     /* Lo clava en la pantalla */
+    bottom: 20px;        /* Separación de 20px desde abajo */
+    right: 20px;         /* Separación de 20px desde la derecha */
+    background-color: #1F4428; /* El verde militar de la Legión */
+    color: white;
+    border: 2px solid white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px; /* Lo hace completamente redondo */
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2000;       /* Asegura que flote POR ENCIMA de las tarjetas de la API */
+    display: none;       /* Al principio está escondido (aparecerá al hacer scroll) */
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Efecto al pasar el mouse */
+.btn-subir:hover {
+    background-color: #e67e22; /* Cambia a naranja */
+    border-color: #e67e22;
+    transform: scale(1.1);     /* Se hace un poquito más grande */
 }
