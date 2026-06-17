@@ -1,195 +1,414 @@
+/* --- FUENTES TIPOGRÁFICAS EXTERNAS --- */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@500;700&family=Noto+Serif+JP:wght@700&display=swap');
+
+/* --- RESETEO GENERAL Y MAQUETACIÓN GLOBAL --- */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
-    background-image: url(IMAGENES/ctmhoyo221861.jpg);
-    background-size: cover; 
-    background-position: center; 
-    background-attachment: fixed; 
+    font-family: 'Georgia', 'Noto Serif JP', 'MS Mincho', serif;
+    color: #e0e0e0;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    background-color: #0d0d0d;
+    background-image: 
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.85) 0%, rgba(13, 13, 13, 0.3) 40%, rgba(13, 13, 13, 0.95) 100%),
+        url('INFORMACION-PUBLICA-INICIO.png'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
-h1 {
-    color: white;
-    margin-top: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-}
-
-h3 {
-    color: white;
-}
-
+/* --- ENCABEZO: BANNER PRINCIPAL --- */
 .banner {
-    background-color: #4A5D4E; 
-    color: white;
-    display: flex;
-    flex-direction: column;   
-    justify-content: center;
-    align-items: center;      
-    gap: 15px;                
-    padding: 20px; 
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100%; /* Asegura que cubra toda la pantalla de lado a lado */
-    transition: top 0.3s ease-in-out;
-    z-index: 1000;
+    background-color: #0a0a0a;
+    text-align: center;
+    padding: 30px 20px;
+    border-bottom: 4px solid #8b0000;
+    box-shadow: 0 4px 20px rgba(139, 0, 0, 0.2);
 }
 
-.logo-container{
-    max-width: 250px;
-    width: 100%;
-    display: flex;
-    justify-content: center;    
-}
-
-.banner-logo {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.banner.oculto {
-    top: -150px; 
-}
-
-.logo {
-    font-weight: bold;
-    font-size: 24px;
-}
-
-.nav-links {
-    display: flex;            
-    list-style: none;         
-    gap: 20px;                
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;   
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.nav-links a:hover {
-    color: #e67e22;           
-}
-
-.contenedor-principal {
-    flex: 1; 
-    display: flex;
-    flex-direction: column;   
-    justify-content: flex-start; 
-    align-items: center;     
-    padding: 200px 20px 40px 20px;
-    gap: 20px; 
-}
-
-.tarjeta-imagen {
-    max-width: 600px; 
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
-    margin-bottom: 20px;
-}
-
-.imagen-centro {
-    width: 100%; 
-    height: auto;
-    display: block;
-    border-radius: 4px;
-}
-
-/* ESTILO PARA LOS BOTONES DENTRO DEL BANNER */
-.buttons button {
-    background-color: transparent; /* Hace el fondo transparente */
-    color: white;                  /* Color del texto */
-    border: 2px solid white;       /* Un borde elegante blanco */
-    padding: 8px 16px;             /* Espacio interno para que no se vean apretados */
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;              /* Cambia el cursor a la mano al pasar por encima */
-    border-radius: 5px;            /* Bordes ligeramente redondeados */
-    transition: all 0.3s ease;     /* Transición suave para el efecto hover */
-}
-
-/* EFECTO CUANDO PASAS EL MOUSE POR ENCIMA */
-.buttons button:hover {
-    background-color: #e67e22;     /* Fondo naranja igual que tus enlaces */
-    color: white;
-    border-color: #e67e22;         /* Cambia el borde al mismo color */
-}
-
-/* CONTENEDOR DE RESULTADOS DE LA API (Para que se muestren en filas y columnas) */
-#resultado {
-    display: flex;
-    flex-wrap: wrap;       /* Si no entran en la fila, saltan abajo */
-    justify-content: center;
-    gap: 20px;             /* Espacio entre tarjeta y tarjeta */
-    width: 100%;
-    max-width: 1200px;     /* Límite para que no se desparrame en pantallas enormes */
-}
-
-/* LA TARJETA INDIVIDUAL */
-.tarjeta {
-    background-color: rgba(0, 0, 0, 0.65); /* Fondo oscuro transparente para que se lea el texto */
-    border: 1px solid #4A5D4E;            /* Borde verde sutil */
-    border-radius: 8px;
-    padding: 15px;
-    width: 250px;                         /* Ancho fijo ideal para personajes/titanes */
+.banner h1 {
+    font-size: 32px;
+    letter-spacing: 4px;
+    color: #eeeeee;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    transition: transform 0.2s ease;
+    gap: 8px;
 }
 
-/* Efecto hover en las tarjetas */
-.tarjeta:hover {
-    transform: translateY(-5px);          /* Pequeño salto hacia arriba al pasar el mouse */
-    border-color: #e67e22;                /* El borde cambia al naranja que te gusta */
+.subtitulo-banner {
+    font-size: 16px;
+    font-family: 'Cinzel Decorative', serif;
+    letter-spacing: 6px;
+    color: #8c763d;
 }
 
-/* LAS IMÁGENES DENTRO DE LAS TARJETAS */
-.tarjeta img {
-    width: 100%;                          /* Se adapta al ancho de la tarjeta (250px) */
-    height: 250px;                        /* Altura fija para que todas las tarjetas midan lo mismo */
-    object-fit: cover;                    /* Corta la imagen proporcionalmente sin deformarla */
+/* --- COMPONENTE: MENÚ DE NAVEGACIÓN --- */
+.menu-militar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #0a0a0a;
+    border-bottom: 2px solid #2d400e;
+    width: 100%;
+    padding: 12px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    gap: 10px;
+}
+
+.menu-militar button {
+    font-family: 'Cinzel', serif;
+    background: none;
+    border: 1px solid transparent;
+    color: #a5a5a5;
+    padding: 10px 22px;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.menu-militar button:hover {
+    color: #e5c158;
+    background-color: rgba(45, 64, 14, 0.25);
+    border-color: #8c763d;
+    text-shadow: 0 0 5px rgba(229, 193, 88, 0.4);
+}
+
+/* --- VISTA: INICIO / CONTENEDOR HOME --- */
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    flex-grow: 1;
+    padding: 40px;
+    min-height: calc(100vh - 180px); 
+    width: 100%;
+}
+
+.intro-contenido {
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 40px;
+    background-color: rgba(10, 10, 10, 0.92); 
+    padding: 45px;
+    border-radius: 6px;
+    border-left: 6px solid #8b0000; 
+    border-top: 1px solid #222;
+    border-right: 1px solid #222;
+    border-bottom: 1px solid #222;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.95);
+    backdrop-filter: blur(8px);
+}
+
+.imagen-bienvenida {
+    width: 45%;
+    max-width: 420px;
+    height: 240px;
+    object-fit: cover;
     border-radius: 4px;
-    margin-top: 10px;
+    border: 1px solid #222;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    filter: grayscale(0.1) sepia(0.1) contrast(1.05);
 }
 
-.btn-subir {
-    position: fixed;     /* Lo clava en la pantalla */
-    bottom: 20px;        /* Separación de 20px desde abajo */
-    right: 20px;         /* Separación de 20px desde la derecha */
-    background-color: #1F4428; /* El verde militar de la Legión */
-    color: white;
-    border: 2px solid white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50px; /* Lo hace completamente redondo */
-    font-size: 24px;
+.textos-bienvenida {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.frase-iconica {
+    font-size: 19px;
+    font-style: italic;
+    color: #eeeeee;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+}
+
+.instruccion {
+    font-size: 12px;
+    color: #8c763d; 
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    line-height: 1.6;
+}
+
+/* --- COMPONENTE: GRILLA Y TARJETAS DE RESULTADOS --- */
+.contenedor-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 30px;
+    padding: 40px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.tarjeta {
+    background-color: rgba(18, 18, 18, 0.9);
+    border: 1px solid #252525;
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    text-align: center;
+    backdrop-filter: blur(3px);
+}
+
+.tarjeta:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: #a30000;
+    box-shadow: 0 20px 35px rgba(163, 0, 0, 0.25), 0 0 15px rgba(163, 0, 0, 0.15);
+}
+
+.tarjeta h3 {
+    font-family: 'Cinzel', serif;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #dcdcdc;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.tarjeta img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 2px;
+    border: 1px solid #111;
+    filter: grayscale(0.2) sepia(0.2) contrast(1.1);
+    transition: filter 0.4s ease;
+}
+
+.tarjeta:hover img {
+    filter: grayscale(0) sepia(0) contrast(1);
+}
+
+.no-img {
+    height: 280px;
+    background-color: #222222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: #444444;
+    border-radius: 4px;
+    border: 1px dashed #333333;
+}
+
+/* --- INTERFAZ: PANTALLA DE CARGA --- */
+.loading-container {
+    text-align: center;
+    padding: 60px;
+    font-size: 16px;
+    color: #3a5311;
+    letter-spacing: 1px;
+}
+
+.alas-libertad-spinner {
+    width: 45px;
+    height: 45px;
+    margin: 0 auto 20px;
+    border: 4px solid rgba(58, 83, 17, 0.2);
+    border-top-color: #3a5311;
+    border-radius: 50%;
+    animation: girar 1s linear infinite;
+}
+
+@keyframes girar {
+    to { transform: rotate(360deg); }
+}
+
+/* --- INTERFAZ: VENTANA MODAL --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    padding: 20px;
+}
+
+.modal-overlay.activo {
+    display: flex;
+}
+
+.modal-content {
+    background-color: #101010;
+    background-image: radial-gradient(circle, #1a1a1a 0%, #0a0a0a 100%);
+    border: 2px solid #8c763d;
+    color: #ffffff;
+    padding: 35px;
+    border-radius: 4px;
+    max-width: 520px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.95), 0 0 20px rgba(140, 118, 61, 0.15);
+    text-align: center;
+}
+
+.modal-content h2 {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.modal-content p {
+    margin-bottom: 8px;
+    border-bottom: 1px dashed rgba(255,255,255,0.05);
+    padding-bottom: 4px;
+}
+
+.modal-content strong {
+    color: #8c763d;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.btn-cerrar {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #8b0000;
+    font-size: 28px;
     font-weight: bold;
     cursor: pointer;
-    z-index: 2000;       /* Asegura que flote POR ENCIMA de las tarjetas de la API */
-    display: none;       /* Al principio está escondido (aparecerá al hacer scroll) */
-    transition: all 0.3s ease;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    transition: color 0.2s;
+    z-index: 10; 
+    padding: 5px 10px; 
+    line-height: 1;
 }
 
-/* Efecto al pasar el mouse */
-.btn-subir:hover {
-    background-color: #e67e22; /* Cambia a naranja */
-    border-color: #e67e22;
-    transform: scale(1.1);     /* Se hace un poquito más grande */
+.btn-cerrar:hover {
+    color: #ffffff;
+}
+
+/* --- INTERFAZ: ELEMENTOS FLOTANTES Y DETALLES MILITARES --- */
+#btnVolverArriba {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #8b0000;
+    color: #ffffff;
+    border: none;
+    padding: 12px 18px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    display: none;
+    z-index: 2000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.status-militar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.tag-status {
+    background-color: rgba(58, 83, 17, 0.3);
+    color: #8be9fd;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid rgba(58, 83, 17, 0.6);
+}
+
+.tag-rango {
+    background-color: rgba(140, 118, 61, 0.15);
+    color: #8c763d;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid rgba(140, 118, 61, 0.4);
+}
+
+/* --- INTERFAZ: COMPONENTES PROPIOS DEL MINIJUEGO --- */
+.btn-opcion {
+    font-family: 'Cinzel', serif;
+    background-color: #121212;
+    border: 1px solid #333;
+    color: #cccccc;
+    padding: 12px 15px;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+}
+
+.btn-opcion:hover:not(:disabled) {
+    background-color: rgba(140, 118, 61, 0.15);
+    border-color: #8c763d;
+    color: #e5c158;
+}
+
+.opcion-correcta {
+    background-color: rgba(58, 83, 17, 0.4) !important;
+    border-color: #3a5311 !important;
+    color: #8be9fd !important;
+}
+
+.opcion-incorrecta {
+    background-color: rgba(139, 0, 0, 0.3) !important;
+    border-color: #8b0000 !important;
+    color: #ff5555 !important;
+}
+
+/* --- CONTROL RESPONSIVE (CELULARES) --- */
+@media (max-width: 768px) {
+    .home {
+        padding: 30px 20px;
+        align-items: center;
+    }
+    .intro-contenido {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        padding: 25px;
+    }
+    .imagen-bienvenida {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+    .status-militar {
+        justify-content: center;
+    }
+    .frase-iconica {
+        font-size: 16px;
+    }
 }

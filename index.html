@@ -3,37 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAGINA DE INICIO</title>
+    <title>Attack on Titan Wiki</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
-    <nav class="banner">
-        <div class="logo-container">
-            <img src="https://cdn.prod.website-files.com/64ea57571d50b02423c4505d/64fa2af723cae8e0aa0e0101_attack%20on%20titan%20logo.png" alt="IMAGENLOGOTIPO" class="banner-logo">
-        </div>
+    <div class="banner">
+        <h1>公開可能な情報 <span class="subtitulo-banner">INFORMACIÓN PÚBLICA</span></h1>
+    </div>
 
-        <div class="buttons"> 
-            <button onclick="ereh()">INICIO</button>
-            <button onclick="xhttpRequest(event)" name="characters">PERSONAJES</button>
-            <button onclick="xhttpRequest(event)" name="titans">TITANES</button>
-            <button onclick="xhttpRequest(event)" name="locations">LOCALIZACIONES</button>
-            <button onclick="xhttpRequest(event)" name="episodes">EPISODIOS</button>
-            <button onclick="xhttpRequest(event)" name="organizations">ORGANIZACIONES</button>
-        </div>
+    <nav class="menu-militar">
+        <button name="characters" onclick="xhttpRequest(event)">Personajes</button>
+        <button name="titans" onclick="xhttpRequest(event)">Titanes</button>
+        <button name="episodes" onclick="xhttpRequest(event)">Episodios</button>
+        <button name="organizations" onclick="xhttpRequest(event)">Organizaciones</button>
+        <button name="locations" onclick="xhttpRequest(event)">Localizaciones</button>
+        <button onclick="ereh()">Inicio</button>
+        <button type="button" onclick="iniciarMinijuego()">Minijuego</button>
     </nav>
 
-    <main class="contenedor-principal">
-        <div class="home">
-            <h1>BIENVENIDO A ATTACK ON TITAN WIKI</h1>
+    <section id="pantalla-inicio" class="home">
+        <div class="intro-contenido">
+            <img src="https://www.geekmi.news/img/2021/03/01/ataque_a_los_titanes_crop1614646649284.png?__scale=w:1200,h:675,t:2" 
+                 alt="Ataque a los Titanes" 
+                 class="imagen-bienvenida">
+
+            <div class="textos-bienvenida">
+                <div class="status-militar">
+                    <span class="tag-status">SISTEMA: OPERATIVO</span>
+                    <span class="tag-rango">RANGO: CADETE</span>
+                </div>
+                <p class="frase-iconica">"Ese día, la humanidad recordó... la humillación de estar encerrados en unos muros"</p>
+                <p class="instruccion">Selecciona una categoría militar en el menú superior para desplegar los archivos secretos.</p>
+            </div>
         </div>
+    </section>
 
-        <div id="resultado"></div>
-    </main>
+    <div id="loading" class="loading-container" style="display: none;">
+        <div class="alas-libertad-spinner"></div>
+        <p>Descifrando registros de los Muros...</p>
+    </div>
 
-    <button id="btnVolverArriba" class="btn-subir" onclick="subirAlInicio()">
-        ↑
-    </button>
+    <section id="zona-juego" style="display: none; flex-direction: column; align-items: center; justify-content: center; flex-grow: 1; padding: 40px; width: 100%;">
+        <div id="pantalla-trivia" class="intro-contenido" style="max-width: 650px; flex-direction: column; text-align: center; gap: 20px;">
+            <div class="status-militar" style="justify-content: center; width: 100%;">
+                <span class="tag-status">MISIÓN: IDENTIFICAR RECLUTA</span>
+                <span id="marcador-puntos" class="tag-rango">PUNTOS: 0</span>
+            </div>
+            
+            <div id="juego-imagen-container" style="position: relative; width: 100%; max-width: 300px; height: 300px; margin: 0 auto; overflow: hidden; border-radius: 4px; border: 2px solid #8c763d;">
+                <img id="juego-img" src="" alt="Recluta Incógnito" style="width: 100%; height: 100%; object-fit: cover; filter: blur(15px); transition: filter 0.5s ease;">
+            </div>
+
+            <p id="juego-pista" class="instruccion" style="color: #858585; margin-top: 10px;">¿Quién es este soldado de Paradis/Marley?</p>
+            
+            <div id="juego-opciones" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; margin-top: 15px;"></div>
+
+            <button id="btn-siguiente" onclick="cargarNuevaPregunta()" class="tag-status" style="display: none; margin-top: 15px; background-color: #8b0000; color: white; border: 1px solid #a30000; padding: 10px 20px; cursor: pointer; font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: 1px; width: auto; align-self: center;">Siguiente Archivo ➔</button>
+        </div>
+    </section>
+
+    <main id="resultado" class="contenedor-tarjetas" style="display: none;"></main>
+
+    <button id="btnVolverArriba" onclick="subirAlInicio()">&uarr;</button>
+
+    <div id="miModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="btn-cerrar" onclick="cerrarModal()">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
 
     <script src="style.js"></script>
 </body>
